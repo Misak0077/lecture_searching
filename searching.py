@@ -18,6 +18,15 @@ def read_data(file_name, field):
     else:
         return data[field]
 
+def linear_search(sekvence, hledaneCislo):
+    count = sekvence.count(hledaneCislo)
+    positions = []
+    for i in range(len(sekvence)):
+        if hledaneCislo == sekvence[i]:
+            positions.append(sekvence[i])
+    return positions, count
+
+
 
 
 

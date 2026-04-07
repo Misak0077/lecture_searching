@@ -23,16 +23,35 @@ def linear_search(sekvence, hledaneCislo):
     positions = []
     for i in range(len(sekvence)):
         if hledaneCislo == sekvence[i]:
-            positions.append(sekvence[i])
+            positions.append(i-1)
     return positions, count
+
+def binary_search(seznam, hledaneCislo):
+    right = len(seznam) - 1
+    left = 0
+    while left <= right:
+        mid = (left + right) //2
+        if hledaneCislo == seznam[mid]:
+            return mid
+        elif seznam[mid] < hledaneCislo:
+            left = mid
+        else:
+            right = mid
+    return None
 
 
 
 
 
 def main():
-    sequential_data = read_data("sequential.json","unordered_numbers")
+    sequential_data = read_data("sequential.json","ordered_numbers")
+    unsequential_data = read_data("sequential.json","unordered_numbers")
     print(sequential_data)
+    linear = linear_search(unsequential_data,1)
+    print(linear)
+    binar = binary_search(sequential_data,8)
+    print(binar)
+
 
 
 

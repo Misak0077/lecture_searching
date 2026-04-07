@@ -39,6 +39,24 @@ def binary_search(seznam, hledaneCislo):
             right = mid
     return None
 
+def pattern_search(sekvence, hledanyVzor):
+
+    shodaIndex = []
+    delka = len(hledanyVzor)
+    print(delka)
+    for i in range(len(sekvence)-len(hledanyVzor)-1):
+        shoda = 0
+        for j in range(len(hledanyVzor)):
+            if hledanyVzor[j] == sekvence[i+j]:
+                shoda +=1
+
+        if shoda == len(hledanyVzor):
+            shodaIndex.append(i)
+
+    return shodaIndex
+
+
+
 
 
 
@@ -46,11 +64,14 @@ def binary_search(seznam, hledaneCislo):
 def main():
     sequential_data = read_data("sequential.json","ordered_numbers")
     unsequential_data = read_data("sequential.json","unordered_numbers")
+    dna = read_data("sequential.json","dna_sequence")
     print(sequential_data)
     linear = linear_search(unsequential_data,1)
     print(linear)
     binar = binary_search(sequential_data,8)
     print(binar)
+    shoda = pattern_search(dna,"ATA")
+    print(shoda)
 
 
 
